@@ -1,10 +1,9 @@
 import { AiOutlinePlus } from 'react-icons/ai'
 import { GiCakeSlice, GiCupcake } from 'react-icons/gi'
-import { LuApple } from 'react-icons/lu'
+import { GrDomain } from 'react-icons/gr'
 import { PiCookingPot } from 'react-icons/pi'
 import { SiBuymeacoffee } from 'react-icons/si'
 import { TbIceCream, TbMeat, TbSalad } from 'react-icons/tb'
-import { PiFishSimpleDuotone } from 'react-icons/pi'
 
 export const navbarData = [
   {
@@ -16,99 +15,42 @@ export const navbarData = [
     dropdown: [
       {
         id: 1,
-        image: <LuApple />,
+        image: <GrDomain />,
         link: '',
-        name: 'Fresh Fruit',
+        name: 'Main',
       },
       {
         id: 2,
-        image: <TbSalad />,
-        link: '',
-        name: 'Vegetables',
-      },
-      {
-        id: 3,
-        image: <PiFishSimpleDuotone />,
-        link: '',
-        name: 'River Fish',
-      },
-      {
-        id: 4,
-        image: <TbMeat />,
-        link: '',
-        name: 'Chicken & Meat',
-      },
-      {
-        id: 5,
         image: <SiBuymeacoffee />,
-        link: '',
+        link: 'drinkIndex',
         name: 'Drink & Watert',
       },
       {
-        id: 6,
+        id: 3,
         image: <TbIceCream />,
-        link: '',
+        link: 'yogurt',
         name: 'Yogurt & Ice Cream',
       },
       {
-        id: 7,
-        link: '',
+        id: 4,
+        link: 'cake',
         image: <GiCakeSlice />,
         name: 'Cake & Bread',
       },
       {
-        id: 8,
+        id: 5,
         image: <GiCupcake />,
-        link: '',
+        link: 'butter',
         name: 'Butter & Cream',
       },
       {
-        id: 9,
-        image: <PiCookingPot />,
-        link: '',
-        name: 'Cooking',
-      },
-      {
-        id: 10,
+        id: 6,
         image: <AiOutlinePlus />,
         link: '',
         name: 'View all Categor',
       },
     ],
   },
-  // {
-  //   id: 2,
-  //   name: 'Home',
-  //   link: '',
-  //   type: 'dropdown',
-  //   dropdown: [
-  //     {
-  //       name: 'Ladoo',
-  //       link: '',
-  //     },
-  //     {
-  //       name: 'Besan Ladoo',
-  //       link: '',
-  //     },
-  //     {
-  //       name: 'Ghee Besan Ladoo',
-  //       link: '',
-  //     },
-  //     {
-  //       name: 'Nariyal Ladoo',
-  //       link: '',
-  //     },
-  //     {
-  //       name: 'Kaju Katli',
-  //       link: '',
-  //     },
-  //     {
-  //       name: 'Rasgulla',
-  //       link: '',
-  //     },
-  //   ],
-  // },
-
   {
     id: 4,
     name: 'Pages',
@@ -116,27 +58,23 @@ export const navbarData = [
     type: 'dropdown',
     dropdown: [
       {
-        name: 'Wishlist',
-        link: 'wishlist',
+        name: 'Favorite',
+        link: 'favorite',
       },
       {
         name: 'Shopping Cart',
         link: 'shoppingCart',
       },
       {
-        name: 'Checkout',
-        link: 'checkout',
-      },
-      {
         name: 'Faqs',
         link: 'faqs',
-      }
+      },
     ],
   },
   {
     id: 3,
-    name: 'Shop',
-    link: 'shop',
+    name: 'Product',
+    link: 'card',
     type: 'single',
     dropdown: [
       {
@@ -167,46 +105,14 @@ export const navbarData = [
   },
   {
     id: 5,
-    name: 'Blog',
-    link: 'blog',
-    type: 'single',
-    dropdown: [
-      {
-        name: 'Ladoo',
-        link: '',
-      },
-      {
-        name: 'Besan Ladoo',
-        link: '',
-      },
-      {
-        name: 'Ghee Besan Ladoo',
-        link: '',
-      },
-      {
-        name: 'Nariyal Ladoo',
-        link: '',
-      },
-      {
-        name: 'Kaju Katli',
-        link: '',
-      },
-      {
-        name: 'Rasgulla',
-        link: '',
-      },
-    ],
-  },
-  {
-    id: 6,
     name: 'About Us',
     link: 'about',
     type: 'single',
   },
-  // {
-  //   id: 7,
-  //   name: 'Contact Us',
-  //   link: '',
-  //   type: 'single',
-  // },
+  {
+    id: 7,
+    name: 'Contact Us',
+    link: 'contact',
+    type: 'single',
+  },
 ]

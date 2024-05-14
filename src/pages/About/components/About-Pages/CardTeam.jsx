@@ -1,75 +1,106 @@
-import { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Container from '../../../../components/common/Container'
 import { instance } from '../../../../utils/apiRequest'
-import { BiLogoFacebook, BiLogoInstagram, BiLogoTwitter } from 'react-icons/bi'
-import { FaPinterestP } from 'react-icons/fa'
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
+import { SlBasket } from 'react-icons/sl'
+import { MdOutlineFavoriteBorder } from 'react-icons/md'
+import { CartContext } from '../../../../contexts/store'
 
 function CardTeam() {
-    const [data, setData] = useState({})
+  const [data, setData] = useState({})
 
-    const getData = async () => {
-        const res = await instance.get('/aboutUs')
-        setData(res.data)
-    }
+  const getData = async () => {
+    const res = await instance.get('/aboutUs')
+    setData(res.data)
+  }
 
-    useEffect(() => {
-        getData()
-    }, [])
+  useEffect(() => {
+    getData()
+  }, [])
 
-    const Left = () => {
-        let Slider = document.querySelector("#slider")
-        Slider.scrollLeft = Slider.scrollLeft + 337
-      }
+  const Left = () => {
+    let Slider = document.querySelector('#slider')
+    Slider.scrollLeft = Slider.scrollLeft + 337
+  }
 
-      const Right = () => {
-        let Slider = document.querySelector("#slider")
-        Slider.scrollLeft = Slider.scrollLeft - 345
-      }
+  const Right = () => {
+    let Slider = document.querySelector('#slider')
+    Slider.scrollLeft = Slider.scrollLeft - 345
+  }
 
-    return (
-        <div className="bg-gradient-to-b from-[#F2F2F2] to-[#FFF] ">
-            <Container>
-                <div className="pt-[80px] text-center">
-                    <h1 className="text-[48px] font-[600]">Our Awesome Team</h1>
-                    <p className="w-[640px] mx-auto text-gray-600 text-[16px]">Pellentesque a ante vulputate leo porttitor luctus sed eget eros. Nulla et rhoncus neque. Duis non diam eget est luctus tincidunt a a mi.</p>
+  const { cart, addToFavorites } = useContext(CartContext)
+
+  const [isBasketClicked, setIsBasketClicked] = useState({})
+  const [isFavoriteClicked, setIsFavoriteClicked] = useState({})
+
+  const handleAddToFavorites = (id) => {
+    addToFavorites(id) // Mahsulotni favoritlar ro'yxatiga qo'shish
+    setIsFavoriteClicked((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }))
+    console.log(`Product with id ${id} added to favorites.`)
+  }
+
+  const handleAddToBasket = (id) => {
+    setIsBasketClicked((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }))
+    console.log(`Product with id ${id} added to basket.`)
+  }
+
+  return (
+    <div className="bg-gradient-to-b from-[#F2F2F2] to-[#FFF] ">
+        <div className="pt-[80px] text-center">
+          <h1 className="text-[48px] font-[600]">Our popular product</h1>
+
+          <div className="container">
+            <div
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              className=" my-[50px] flex gap-[30px] flex-wrap"
+            >
+              {cart.slice(0, 8).map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg shadow-2xl border border-gray-300 w-[300px] h-[420px] text-left flex flex-col"
+                >
+                  <img className="w-full h-[220px] object-contain rounded-lg mb-4" src={item.img} alt="" />
+                  <div data-aos="fade-down" className="text p-2">
+                    <h2 className="text-black-600 font-poppins text-[30px] font-normal leading-relaxed">
+                      {item.title}
+                    </h2>
+                    <p className="w-[250px] text-black-600 font-poppins text-base font-normal leading-relaxed overflow-hidden whitespace-nowrap overflow-ellipsis">
+                      {item.description}
+                    </p>
+                    <div className="text-[20px] font-normal font-poppins flex gap-5 items-center mb-4">
+                      <h3 className="text-gray-600 ">{item.prices}</h3>
+                      <h3 className="text-red-400 line-through">{item.discount}</h3>
+                    </div>
+                    <div className="flex justify-between">
+                      <button
+                        className={`w-[135px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
+                    ${isBasketClicked[item.id] ? 'bg-black text-white' : 'bg-white text-gray-600'}`}
+                        onClick={() => handleAddToBasket(item.id)}
+                      >
+                        <SlBasket className="text-lg" />
+                      </button>
+                      <button
+                        className={`w-[135px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
+                    ${isFavoriteClicked[item.id] ? 'bg-black text-white' : 'bg-white text-gray-600'}`}
+                        onClick={() => handleAddToFavorites(item.id)}
+                      >
+                        <MdOutlineFavoriteBorder className="text-lg" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex gap-[20px] relative">
-                    <div className="border p-[13px] absolute top-[260px] left-[-70px] rounded-[50px] cursor-pointer bg-white hover:bg-[#00B207] hover:text-white" onClick={Right}><AiOutlineArrowLeft /></div>
-                    <div className="border p-[13px] absolute top-[255px] right-[-70px] rounded-[50px] cursor-pointer bg-white hover:bg-[#00B207] hover:text-white" onClick={Left}><AiOutlineArrowRight /></div>
-                </div>
-                <div id="slider" className="scroll-smooth mt-[100px] pb-[100px] flex overflow-x-scroll  scrollbar-hide gap-[24px] pr-[10px]">
-                    {data.cards?.map((item) => (<div key={item.id}>
-                        <div className="border w-[312px] h-[368px] bg-white rounded-[8px] shadow-[0_20px_48px_0_rgba(0,38,3,0.08)]">
-                            <img className="w-[312px] h-[280px]" src={item.linkImg} alt="" />
-                            <div className="pt-[16px] pl-[20px]">
-                                <h3 className="text-[18px] font-[500]">{item.title}</h3>
-                                <p className="text-gray-500 text-[14px]">{item.category}</p>
-                            </div>
-                            <div className="overlay relative ">
-                                <div className="h-[280px] w-[311px]  content opacity-0 hover:opacity-100 cursor-pointer hover:bg-black hover:bg-opacity-40 rounded-t-lg flex items-center justify-center gap-[4px] absolute top-[-344px] left-0 hover:transition-all">
-                                    <div className="flex items-center gap-1">
-                                        <div className="hover:bg-primary text-white p-2 cursor-pointer rounded-full transition-all ease-in-out duration-500 hover:text-white">
-                                            <BiLogoFacebook fontSize={24} />
-                                        </div>
-                                        <div className="hover:bg-primary text-white p-2 cursor-pointer rounded-full transition-all ease-in-out duration-500 hover:text-white">
-                                            <BiLogoTwitter fontSize={24} />
-                                        </div>
-                                        <div className="hover:bg-primary text-white p-2 cursor-pointer rounded-full transition-all ease-in-out duration-500 hover:text-white">
-                                            <FaPinterestP fontSize={24} />
-                                        </div>
-                                        <div className="hover:bg-primary text-white p-2 cursor-pointer rounded-full transition-all ease-in-out duration-500 hover:text-white">
-                                            <BiLogoInstagram fontSize={24} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>))}
-                </div>
-            </Container>
+              ))}
+            </div>
+          </div>
         </div>
-    )
+    </div>
+  )
 }
 
 export default CardTeam

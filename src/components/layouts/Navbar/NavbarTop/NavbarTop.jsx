@@ -47,23 +47,6 @@ const NavbarTop = () => {
               </SelectItem>
             </SelectContent>
           </Select>
-
-          {/* <Select>
-            <SelectTrigger className="focus:ring-offset-0 h-full rounded-none placeholder:text-muted-foreground focus:outline-none focus:ring-0 disabled:opacity-100 w-max p-0 text-gray-300 font-normal bg-gray-800 text-xs hover:text-primary outline-none border-input border-none gap-[6px] flex items-center justify-center">
-              <SelectValue placeholder="USD" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="usd" className="cursor-pointer text-gray-300 font-normal text-xs">
-                USD
-              </SelectItem>
-              <SelectItem value="rubl" className="cursor-pointer text-gray-300 font-normal text-xs">
-                РУБЛЬ
-              </SelectItem>
-              <SelectItem value="som" className="cursor-pointer text-gray-300 font-normal text-xs">
-                SUM
-              </SelectItem>
-            </SelectContent>
-          </Select> */}
           <div className="w-[1px] h-[15px] bg-gray-100"></div>
           <div className="flex items-center gap-1 w-full">
             {!logged ? (

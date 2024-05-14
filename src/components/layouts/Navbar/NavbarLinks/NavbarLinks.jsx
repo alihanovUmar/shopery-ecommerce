@@ -8,14 +8,9 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 import { navbarData } from '../__mock__/navbarData'
 import './navbarLinks.css'
 
-// import { useTranslation } from 'react-i18next'
-// import { translationKeys } from '../../../../utils/translation/translationKeys'
-
 const NavbarLinks = () => {
-  // const { t } = useTranslation()
-
   return (
-    <div className="bg-gray-50">
+    <div className=" bg-gray-50">
       <div className="max-w-[1320px] m-auto">
         <div className="w-full flex items-center justify-between">
           <ul className="navbarLinks">
@@ -105,10 +100,10 @@ const NavbarLinks = () => {
           </Sheet>
 
           <div className="navigationTel">
-            <a href="tel:2195550114">
+            <Link to="/contact">
               <FiPhoneCall />
-              <p>(219) 555-0114</p>
-            </a>
+              <p>(+996) 555 55-55-55</p>
+            </Link>
           </div>
         </div>
       </div>

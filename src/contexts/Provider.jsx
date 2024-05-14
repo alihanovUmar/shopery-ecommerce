@@ -16,20 +16,17 @@ const Provider = ({ children }) => {
   const values = { wishlist, setWishlist, shoppingCart, setShoppingCart }
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       const res = await getUser()
-      setWishlist(res.wishlist)
-      setShoppingCart(res.shoppingCart)
+      if (res) {
+        setWishlist(res.wishlist || [])
+        setShoppingCart(res.shoppingCart || [])
+      }
     })()
   }, [])
 
-  return (
-    <Context.Provider value={values}>
-      {children}
-    </Context.Provider>
-  )
+  return <Context.Provider value={values}>{children}</Context.Provider>
 }
-
 
 export default Provider
 

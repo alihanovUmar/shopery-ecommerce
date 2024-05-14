@@ -1,4 +1,3 @@
-/* eslint-disable no-extra-semi */
 import PropTypes from 'prop-types'
 import ModalDetails from './components/ModalDetails'
 import TabBar from './components/Tabs'

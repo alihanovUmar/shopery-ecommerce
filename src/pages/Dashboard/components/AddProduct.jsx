@@ -98,7 +98,6 @@ function AddProduct() {
                 onChange={handleChange}
               />
             </div>
-            {/* Category */}
             <div>
               <Label htmlFor="productCategory" className="py-2 inline-block text-textMedium mt-5">
                 Category

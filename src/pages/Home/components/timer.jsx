@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Button } from '../../../components/ui/button'
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 function Timer() {
   const [count1, setCount1] = useState(2)
   const [count2, setCount2] = useState(18)
@@ -26,9 +27,14 @@ function Timer() {
       }
     }, 1000)
 
-    //Clearing the interval
     return () => clearInterval(interval)
   }, [count3])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+    })
+  }
 
   return (
     <div className="box">
@@ -56,9 +62,11 @@ function Timer() {
         </div>
       </div>
       <div className="flex justify-center">
-        <Button className=" text-center my-6">
-          shop now <ArrowRight />
-        </Button>
+        <Link onClick={scrollToTop} to="/card">
+          <Button className="text-center my-6 hover:animate-clickAnimation">
+            shop now <ArrowRight />
+          </Button>
+        </Link>
       </div>
     </div>
   )

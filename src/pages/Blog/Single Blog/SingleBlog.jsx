@@ -17,15 +17,14 @@ import { Input } from '../../../components/ui/input'
 // import { none } from '@cloudinary/url-gen/qualifiers/fontHinting'
 import { Checkbox } from '../../../components/ui/checkbox'
 
-const SingleBlog = () => {
+const 
+
+SingleBlog = () => {
   const { CardID } = useParams()
   const { data } = useContext(BlogContext)
   const singleCardData = data?.filter((card) => card.id == CardID)
 
   const { previewImage, extraImages } = singleCardData[0]
-  // const { data } = DATA
-
-  // singleCardData  shu datani ichida to`liq ma`lumotlar bor shu object orqali foydalanamiz !!!
 
   console.log(data, 'data')
 

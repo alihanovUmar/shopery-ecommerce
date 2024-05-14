@@ -1,19 +1,25 @@
-// import { LazyLoadImage } from 'react-lazy-load-image-component'
-// import 'react-lazy-load-image-component/src/effects/blur.css'
-
+import { Link } from 'react-router-dom'
 import { Button } from '../../../components/ui/button'
 import { ArrowRight } from 'lucide-react'
 const special = [
-  { title: '100% Fresh Cow Milk', id: 1 },
-  { title: 'Water &Soft Drink', id: 2 },
-  { title: 'Quick Breakfast', id: 3 },
+  { title: '100% Fresh Cow Milk', suptitle: 'Starting at', price: '$14.99', id: 1 },
+  { title: 'Drink Sale', suptitle: 'Water & Soft Drink', id: 2 },
+  { title: '100% Organic', suptitle: 'Quick Breakfast', id: 3 },
 ]
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+  })
+}
+
 function OurSpecial() {
   return (
     <div className=" flex container justify-between py-24">
       {special.map((el) => {
         return (
           <div
+            data-aos="zoom-in-up"
             className=" px-6 py-10"
             key={el.id}
             style={{
@@ -22,12 +28,23 @@ function OurSpecial() {
               backgroundSize: 'cover',
               height: '255px',
               width: '424px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-around',
             }}
           >
-            <h1 className=" text-[32px] font-semibold">{el.title}</h1>
-            <Button className=" my-5">
-              shop now <ArrowRight />
-            </Button>
+            <h1 className=" text-white font-poppins text-2xl font-semibold leading-10">{el.title}</h1>
+            <div className="flex gap-1">
+              <h2 className="text-[rgba(255,255,255,0.8)] font-poppins text-base font-medium leading-6">
+                {el.suptitle}
+              </h2>
+              <h2 className=" text-white font-poppins text-2xl font-medium leading-6">{el.price}</h2>
+            </div>
+            <Link onClick={scrollToTop} to="/card">
+              <Button data-aos="zoom-out-right" className="my-5">
+                shop now <ArrowRight />
+              </Button>
+            </Link>
           </div>
         )
       })}

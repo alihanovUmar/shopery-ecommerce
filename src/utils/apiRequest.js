@@ -1,8 +1,9 @@
-import axios from 'axios'
+// apiRequest.js
+import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'https://shopery-api.onrender.com/',
+  baseURL: 'https://jsonplaceholder.typicode.com', // Mock API base URL
   headers: {
     'Content-Type': 'application/json',
   },
-})
+});

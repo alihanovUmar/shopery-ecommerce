@@ -129,27 +129,6 @@ function ModalDetails({ product }) {
             <p className="text-gray-500 mt-4">{littleDesCription}</p>
           </div>
           <div className="flex items-center justify-between w-full gap-3 border-t-2 border-b-2 py-5">
-            {/* <div className="flex items-center">
-              <Button
-                className="rounded-full p-0 w-10 h-10 mr-[-45px] z-10"
-                variant="ghost"
-                onClick={() => handleMinus()}
-              >
-                -
-              </Button>
-              <input
-                type="number"
-                value={product.quantity}
-                className="rounded-full w-36 px-12 py-3 border-2 focus:outline-none"
-              />
-              <Button
-                className="rounded-full p-0 w-10 h-10 z-10 ml-[-45px]"
-                variant="ghost"
-                onClick={() => handlePlus()}
-              >
-                +
-              </Button>
-            </div> */}
             <Button onClick={handleShopClick} variant="fill" className="flex items-center w-full gap-3">
               <p>Add to Cart</p> <PiHandbagBold size={17} />
             </Button>

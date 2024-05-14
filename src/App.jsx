@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Home from './pages/Home/Home'
-import Shop from './pages/Shop'
+import Shop from './pages/ShopProduckt/ShopProduckt'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 import Signup from './pages/Auth/Signup'
 import Signin from './pages/Auth/Signin'
@@ -25,13 +25,18 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import RootLayout from "./components/layouts/RootLayout";
 import Index from "./pages/Blog/Index";
 import ShopProvider from "./contexts/shop/ShopContext";
-import Wishlist from "./pages/Wishlist/Wishlist";
+import Favorite from "./pages/Favorite/Favorite";
+import {Card} from "./components/common/Cards/Card";
 import AddProduct from "./pages/Dashboard/components/AddProduct";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import Faqs from "./pages/Faqs/Faqs";
-import Checkout from "./pages/Checkout/Checkout";
 import { useEffect, useState } from "react";
 import { getUser } from "./utils/utils";
+import DrinkIndex from "./pages/Categories/Drink/DrinkIndex";
+import Yogurt from "./pages/Categories/Yogurt/Yogurt";
+import Cake from "./pages/Categories/Cake/Cake";
+import Butter from "./pages/Categories/Butter/Butter";
+import Contact from "./pages/Contact/Contact";
 
 export default function App() {
   const [logged, setLogged] = useState(true)
@@ -75,16 +80,21 @@ export default function App() {
             )}
           </Route>
         ) : <Route path="PageNotFound" element={<PageNotFound />} />}
-        <Route path="wishlist" element={<Wishlist />} />
+        <Route path="favorite" element={<Favorite />} />
         <Route path="shoppingCart" element={<ShoppingCart />} />
+        <Route path="drinkIndex" element={<DrinkIndex/>} />
+        <Route path="yogurt" element={<Yogurt/>} />
+        <Route path="cake" element={<Cake/>} />
+        <Route path="butter" element={<Butter/>} />
         <Route path="blog/:CardID" element={<SingleBlog />} />
-        <Route path="checkout" element={<Checkout />} />
-        <Route path="shop" element={<Shop />} />
+        <Route path="product" element={<Shop />} />
+        <Route path="card" element={<Card />} />
         <Route path="shop/:productID" element={<ProductDetails />} />
         <Route path="sign-up" element={<Signup />} />
         <Route path="sign-in" element={<Signin />} />
         <Route path="faqs" element={<Faqs />} />
         <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
         <Route path="PageNotFound" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to={'/PageNotFound'} />} />
       </Route>

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-
 import { useEffect, useState } from 'react'
 import ProductCard from '../../components/common/Cards/ProductCard'
 import Video from '../../components/common/video/video'
@@ -8,41 +7,37 @@ import Timer from './components/timer'
 import SwiperTop from '../../components/ui/swiper'
 import Featured from '../../components/common/featured/featured'
 import { instance } from '../../utils/apiRequest'
-
-const vegetablesData = ['All', 'Vegetables', 'Fruit', 'Meat & Fish']
+import Customers from '../../components/common/Customers/Customers'
+import { FaArrowRightLong } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
-  const [dataProduct, setdataProduct] = useState([])
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
-  const filteredData = async (item) => {
-    if (item === 'Fruit') {
-      const dataFresh = await instance.get('products?category=Fresh%20Fruit')
-      setdataProduct(dataFresh.data)
-    } else if (item === 'Vegetables') {
-      const dataVeg = await instance.get('products?category=Vegetables')
-      setdataProduct(dataVeg.data)
-    } else if (item === 'Meat & Fish') {
-      const dataCooking = await instance.get('products?category=Cooking')
-      setdataProduct(dataCooking.data)
-    } else if (item === 'All') {
-      const dataAll = await instance.get(`/products`)
-      setdataProduct(dataAll.data)
-    }
-  }
+  const [dataProduct, setdataProduct] = useState([])
 
   useEffect(() => {
-    // eslint-disable-next-line no-extra-semi
-    ; (async () => {
-      const dataProductPage = await instance.get(`/products`)
+    ;(async () => {
+      const dataProductPage = await instance.get('/products')
       setdataProduct(dataProductPage.data)
     })()
   }, [])
 
   const [matches, setMatches] = useState(window.matchMedia('(min-width: 570px)').matches)
-  window.matchMedia('(min-width: 570px)').addEventListener('change', (e) => setMatches(e.matches))
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 570px)')
+    const handler = (e) => setMatches(e.matches)
+    mediaQuery.addEventListener('change', handler)
+    return () => mediaQuery.removeEventListener('change', handler)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+    })
+  }
 
   return (
     <div>
@@ -52,57 +47,57 @@ const Home = () => {
           <Featured />
         </div>
       </div>
-      <div className="bg-[#EDF2EE] py-[100px]">
-        <h1 className="font-[600] text-[40px] text-center  mb-[24px]">Introducing Our Products</h1>
-        <div className="text-center mb-[50px]">
-          {vegetablesData.map((item, index) => {
-            return (
-              // eslint-disable-next-line react/jsx-key
-              <a className='cursor-pointer' key={index} onClick={() => filteredData(item)}>
-                <span className="hover:border-b-2 hover:text-[#00B207] text-[#808080] text-[16px] font-[500] border-[#20B526] py-[8px] px-[12px]">
-                  {item}
-                </span>{' '}
-                {index < vegetablesData.length - 1 ? (
-                  <span className="mx-[10px] text-[#B4CCB4] font-[400]">|</span>
-                ) : (
-                  ''
-                )}
-              </a>
-            )
-          })}
-        </div>
-        <div className="border">
-          <div className="flex flex-wrap justify-center mx-auto w-[1320px]">
-            {dataProduct.map((data) => {
-              return <ProductCard key={data.id} {...data} />
-            })}
-          </div>
+      <div className="bg-[#EDF2EE] py-[100px] mt-[80px] shadow-lg hover:shadow-x transition-shadow duration-500">
+        <h1 className="font-[600] text-[40px] text-center mb-[24px]">Introducing Our Products</h1>
+      </div>
+
+      <div className=" bg-slate-500 p-[100px]">
+        <ProductCard className="rounded-md shadow-lg hover:shadow-x transition-shadow duration-500 border border-gray-200" />
+
+        <div className="flex justify-end pr-[140px]">
+          <Link onClick={scrollToTop} to="/card">
+            <button className="w-[135px] h-[40px] gap-[10px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 bg-white shadow-md">
+              View All <FaArrowRightLong />
+            </button>
+          </Link>
         </div>
       </div>
-      <OurSpecial />
 
-      <div className="bg-slate-300 ">
-        <div className="mx-auto  flex overflow-hidden items-center justify-between">
+      <div>
+        <OurSpecial />
+      </div>
+
+      <div>
+        <Customers />
+      </div>
+
+      <div className="bg-slate-300">
+        <div className="mx-auto flex overflow-hidden items-center justify-between">
           <div className="mx-auto w-[1518px] flex overflow-hidden items-center justify-between py-20">
             <img className="w-[521px]" src="/assets/images/special/special_left.png" alt="" />
             <Timer />
             <img className="w-[700px] mb-[-80px]" src="/assets/images/special/special_right.png" alt="" />
           </div>
         </div>
-
-        <div className="bg-white">
-          <div className="container">{/* <FeaturedProducts dataFeatures={data} /> */}</div>
-        </div>
-
-        <div className=" bg-latestWhiteGrayReverse">
-          <div className=" container py-[100px] ">
+        <div className="bg-latestWhiteGrayReverse">
+          <div className="container py-[100px]">
             <Video
-              src="https://youtu.be/0ptb_0gN7_4"
+              src="https://youtu.be/dLC54mz--Dk?si=u_u33hn1zg3Gym_X"
               width="1320px"
               height={matches ? '740px' : '500px'}
               title="We’re the Best Organic Farm in the World"
             />
           </div>
+        </div>
+
+        <div className="container">
+          <iframe
+            className="flex justify-center items-center p-[50px] rounded-md shadow-custom-lg hover:shadow-x transition-shadow duration-500  border-gray-200"
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A094a39eafebde5fc80bafd04951bc4c3f9d85095f3cfaee4dac7320da26b1970&amp;source=constructor"
+            width="100%"
+            height="600"
+            frameborder="0"
+          ></iframe>
         </div>
       </div>
     </div>

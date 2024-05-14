@@ -4,38 +4,43 @@ import { FaCcApplePay, FaCcVisa, FaCcDiscover, FaCcMastercard } from 'react-icon
 import { RiSecurePaymentFill } from 'react-icons/ri'
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+    })
+  }
+
   return (
     <div className="w-full bg-gray-900">
       <div className="max-w-[1320px] m-auto ">
         <div className="flex items-center justify-between py-[60px] flex-wrap">
           <div className="flex flex-col gap-4 max-w-[336px]">
-            <LogoIcon color="white" />
-            <p className="text-gray-500 text-[14px]">
-              Morbi cursus porttitor enim lobortis molestie. Duis gravida turpis dui, eget bibendum magna congue nec.
-            </p>
-            <div className="flex gap-4">
-              <a href="tel:2195550114" className="text-white border-b-2 pb-[6px] border-primary">
-                (219) 555-0114
-              </a>
-              <p className="text-gray-500 text-[14px]">or</p>
-              <a href="mail:Proxy@gmail.com" className="text-white border-b-2 pb-[6px] border-primary">
-                Proxy@gmail.com
-              </a>
-            </div>
+            <Link onClick={scrollToTop} to="/">
+              <LogoIcon color="white" />
+            </Link>
+            <Link onClick={scrollToTop} to="/contact">
+              <div className="flex gap-1">
+                <div className="text-white border-b-2 pb-[6px] border-primary">(996) 555 55-55-55</div>
+                <p className="text-gray-500 text-[14px]">or</p>
+                <div className="text-white border-b-2 pb-[6px] border-primary">
+                  mega@gmail.com
+                </div>
+              </div>
+            </Link>
           </div>
           <div className="flex flex-col gap-5">
             <h1 className="text-[16px] text-white">My Account</h1>
             <div className="flex flex-col gap-3 text-gray-400 ">
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/" className="hover:text-white text-[14px]">
                 My Account
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/" className="hover:text-white text-[14px]">
                 Order History
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/" className="hover:text-white text-[14px]">
                 Shoping Cart
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/" className="hover:text-white text-[14px]">
                 Wishlist
               </Link>
             </div>
@@ -43,16 +48,16 @@ export default function Footer() {
           <div className="flex flex-col gap-5">
             <h1 className="text-[16px] text-white">Helps</h1>
             <div className="flex flex-col gap-3 text-gray-400 ">
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/contact" className="hover:text-white text-[14px]">
                 Contact
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/contact" className="hover:text-white text-[14px]">
                 Faqs
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/contact" className="hover:text-white text-[14px]">
                 Terms & Condition
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/contact" className="hover:text-white text-[14px]">
                 Privacy Policy
               </Link>
             </div>
@@ -60,16 +65,16 @@ export default function Footer() {
           <div className="flex flex-col gap-5">
             <h1 className="text-[16px] text-white">Proxy</h1>
             <div className="flex flex-col gap-3 text-gray-400 ">
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/card" className="hover:text-white text-[14px]">
                 About
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/card" className="hover:text-white text-[14px]">
                 Shop
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/card" className="hover:text-white text-[14px]">
                 Product
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
+              <Link onClick={scrollToTop} to="/card" className="hover:text-white text-[14px]">
                 Track Order
               </Link>
             </div>
@@ -77,17 +82,17 @@ export default function Footer() {
           <div className="flex flex-col gap-5">
             <h1 className="text-[16px] text-white">Categories</h1>
             <div className="flex flex-col gap-3 text-gray-400 ">
-              <Link to="" className="hover:text-white text-[14px]">
-                Fruit & Vegetables
+              <Link onClick={scrollToTop} to="/drinkIndex" className="hover:text-white text-[14px]">
+                Drink & Watert
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
-                Meat & Fish
+              <Link onClick={scrollToTop} to="/yogurt" className="hover:text-white text-[14px]">
+                Yogurt & Ice Cream
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
-                Bread & Bakery
+              <Link onClick={scrollToTop} to="/cake" className="hover:text-white text-[14px]">
+                Cake & Bread
               </Link>
-              <Link to="" className="hover:text-white text-[14px]">
-                Beauty & Health
+              <Link onClick={scrollToTop} to="/butter" className="hover:text-white text-[14px]">
+                Butter & Cream
               </Link>
             </div>
           </div>
@@ -97,7 +102,7 @@ export default function Footer() {
         <div className="py-6 flex items-center justify-between">
           <div className="">
             <a href="#1" className="text-gray-500 hover:text-white">
-              Ecobazar eCommerce © 2021. All Rights Reserved
+              MegaCenter eCommerce © 2024. All Rights Reserved
             </a>
           </div>
           <div className="text-white flex items-center gap-2">
