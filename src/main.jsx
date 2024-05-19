@@ -6,7 +6,6 @@ import './main.css'
 import Provider from './contexts/Provider'
 import { CartProvider } from './contexts/store'
 import { SearchProvider } from './contexts/SearchContext'
-import { CartContext } from './contexts/CartContext'
 
 const rootEl = document.getElementById('root')
 

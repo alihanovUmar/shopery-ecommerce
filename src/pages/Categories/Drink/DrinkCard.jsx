@@ -1,26 +1,49 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { SlBasket } from 'react-icons/sl'
 import { MdOutlineFavoriteBorder } from 'react-icons/md'
 import { CartContext } from '../../../contexts/store'
 export default function DrinkCard() {
-  const { cart } = useContext(CartContext)
-  const [isBasketClicked, setIsBasketClicked] = useState({})
-  const [isFavoriteClicked, setIsFavoriteClicked] = useState({})
+  const { cart, addToFavorites, favoriteProducts, removeFromFavorites, setShoppingCart } = useContext(CartContext)
+  const [isBasketClicked, setIsBasketClicked] = useState([])
+  const [localCart, setLocalCart] = useState([])
 
-  const handleAddToFavorites = (id) => {
-    setIsFavoriteClicked((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
-    console.log(`Product with id ${id} added to favorites.`)
+  useEffect(() => {
+    const localCartData = JSON.parse(localStorage.getItem('cart'))
+    if (localCartData) {
+      setLocalCart(localCartData)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
+
+  const handleAddToBasket = (product) => {
+    setIsBasketClicked((prev) => [...prev, product.id])
+
+    setShoppingCart((prevCart) => {
+      const updatedCart = [...prevCart]
+      const productIndex = updatedCart.findIndex((item) => item.id === product.id)
+      if (productIndex !== -1) {
+        updatedCart[productIndex].quantity = (updatedCart[productIndex].quantity || 0) + 1
+      } else {
+        updatedCart.push({ ...product, quantity: 1 })
+      }
+      return updatedCart
+    })
+
+    console.log(`Product with id ${product.id} added to basket.`)
   }
 
-  const handleAddToBasket = (id) => {
-    setIsBasketClicked((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
-    console.log(`Product with id ${id} added to basket.`)
+  const handleAddToFavorites = (product) => {
+    const isFavorite = favoriteProducts.some((favProduct) => favProduct.id === product.id)
+    if (isFavorite) {
+      removeFromFavorites(product.id)
+      console.log(`Product with id ${product.id} removed from favorites.`)
+    } else {
+      addToFavorites(product)
+      console.log(`Product with id ${product.id} added to favorites.`)
+    }
   }
 
 
@@ -45,15 +68,23 @@ export default function DrinkCard() {
               <div className="flex justify-between">
                 <button
                   className={`w-[135px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
-                    ${isBasketClicked[item.id] ? 'bg-black text-white' : 'bg-white text-gray-600'}`}
-                  onClick={() => handleAddToBasket(item.id)}
+                      ${
+                        isBasketClicked.some((clickedProductId) => clickedProductId === item.id)
+                          ? 'bg-black text-white'
+                          : 'bg-white text-gray-600'
+                      }`}
+                  onClick={() => handleAddToBasket(item)}
                 >
                   <SlBasket className="text-lg" />
                 </button>
                 <button
                   className={`w-[135px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
-                    ${isFavoriteClicked[item.id] ? 'bg-black text-white' : 'bg-white text-gray-600'}`}
-                  onClick={() => handleAddToFavorites(item.id)}
+                      ${
+                        favoriteProducts.some((favProduct) => favProduct.id === item.id)
+                          ? 'bg-black text-white'
+                          : 'bg-white text-gray-600'
+                      }`}
+                  onClick={() => handleAddToFavorites(item)}
                 >
                   <MdOutlineFavoriteBorder className="text-lg" />
                 </button>

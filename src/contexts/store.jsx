@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
     },
     {
       id: 5,
-      img: 'https://sneg.top/uploads/posts/2023-04/1681614988_sneg-top-p-baklazhan-kartinka-krasivo-21.jpg',
+      img: 'https://wallpapers.com/images/hd/two-black-nadia-eggplants-jcpyc6ri1ce7ocr2.jpg',
       title: 'Eggplant',
       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, tenetur.',
       prices: '$12.99',
@@ -315,31 +315,38 @@ export const CartProvider = ({ children }) => {
       discount: '$20.99',
     },
   ])  
-  
-  const [showModal, setShowModal] = useState(false);
-  const [modalItem, setModalItem] = useState(null);
-  const [input, setInput] = useState('');
+
   const [shoppingCart, setShoppingCart] = useState([]);
   const [favoriteProducts, setFavoriteProducts] = useState([]);
 
   const addToFavorites = (product) => {
-    setFavoriteProducts([...favoriteProducts, product]);
+    setFavoriteProducts((prevFavorites) => {
+      const exists = prevFavorites.some((favProduct) => favProduct.id === product.id);
+      if (!exists) {
+        return [...prevFavorites, product];
+      }
+      return prevFavorites;
+    });
   };
 
+  const removeFromFavorites = (id) => {
+    setFavoriteProducts((prevFavorites) => prevFavorites.filter((product) => product.id !== id));
+  };
+
+  const removeFromCart = (id) => {
+    setShoppingCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
 
   const value = {
     cart,
     setCart,
-    showModal,
-    modalItem,
-    input,
-    setInput,
     shoppingCart,
     setShoppingCart,
-    favoriteProducts, 
+    favoriteProducts,
     addToFavorites,
+    removeFromFavorites,
+    removeFromCart,
   };
-  
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
