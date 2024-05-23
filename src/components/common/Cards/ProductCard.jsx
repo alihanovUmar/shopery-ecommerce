@@ -2,10 +2,14 @@ import React, { useContext, useState, useEffect } from 'react'
 import { SlBasket } from 'react-icons/sl'
 import { MdOutlineFavoriteBorder } from 'react-icons/md'
 import { CartContext } from '../../../contexts/store'
+import ProductModal from './ProductModal' 
+
 export default function ProductCard() {
   const { cart, addToFavorites, favoriteProducts, removeFromFavorites, setShoppingCart } = useContext(CartContext)
   const [isBasketClicked, setIsBasketClicked] = useState([])
   const [localCart, setLocalCart] = useState([])
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false) 
 
   useEffect(() => {
     const localCartData = JSON.parse(localStorage.getItem('cart'))
@@ -46,6 +50,15 @@ export default function ProductCard() {
     }
   }
 
+  const openModal = (product) => {
+    setSelectedProduct(product)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <div className="container">
       <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className=" my-[50px] flex gap-[30px] flex-wrap">
@@ -54,7 +67,12 @@ export default function ProductCard() {
             key={index}
             className="bg-white rounded-lg shadow-2xl border border-gray-300 w-[300px] h-[420px] text-left flex flex-col"
           >
-            <img className="w-full h-[220px] object-contain rounded-lg mb-4" src={item.img} alt="" />
+            <img
+              onClick={() => openModal(item)}
+              className="w-full h-[220px] object-contain rounded-lg mb-4"
+              src={item.img}
+              alt=""
+            />
             <div data-aos="fade-down" className="text p-2">
               <h2 className="text-black-600 font-poppins text-[30px] font-normal leading-relaxed">{item.title}</h2>
               <p className="w-[250px] text-black-600 font-poppins text-base font-normal leading-relaxed overflow-hidden whitespace-nowrap overflow-ellipsis">
@@ -92,6 +110,7 @@ export default function ProductCard() {
           </div>
         ))}
       </div>
+      {isModalOpen && <ProductModal product={selectedProduct} closeModal={closeModal} />}
     </div>
   )
 }
