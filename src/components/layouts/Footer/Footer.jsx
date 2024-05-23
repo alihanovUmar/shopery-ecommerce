@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import LogoIcon from '../Navbar/images/LogoIcon'
+import { Link } from 'react-router-dom';
+import LogoIcon from '../Navbar/images/LogoIcon';
 import {
   FaCcApplePay,
   FaCcVisa,
@@ -10,22 +10,39 @@ import {
   FaTwitter,
   FaInstagram,
   FaLinkedin,
-} from 'react-icons/fa'
-import { RiSecurePaymentFill } from 'react-icons/ri'
-import { CgMail } from 'react-icons/cg'
+} from 'react-icons/fa';
+import { RiSecurePaymentFill } from 'react-icons/ri';
+import { CgMail } from 'react-icons/cg';
+import { useEffect, useState } from 'react';
 
 export default function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0 })
-  }
+    window.scrollTo({ top: 0 });
+  };
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Мобильный вид для ширины менее 768 пикселей
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div className="w-full bg-gray-800 text-gray-300 text-xs">
-      <div className="max-w-[1320px] mx-auto py-5 px-4">
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col gap-5">
-            <Link onClick={scrollToTop} to="/">
-              <LogoIcon color="white" className="w-24 h-24" />
+      <div className="max-w-[1320px] mx-auto p-5 px-4">
+        <div className="flex flex-wrap justify-center md:justify-between items-center gap-[50px]">
+          <div className="flex flex-col gap-5 mb-6 md:mb-0">
+            <Link className="bg-white w-25 h-26 rounded-[10px]" onClick={scrollToTop} to="/">
+              <LogoIcon className="w-24 h-24" />
             </Link>
             <div className="flex flex-col gap-3">
               <Link onClick={scrollToTop} to="/contact">
@@ -39,10 +56,10 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <h1 className="text-[18px] text-white font-semibold">My Account</h1>
+          <div className="flex flex-col gap-4 mb-6 md:mb-0">
+            <h1 className="text-[18px] text-white font-semibold">Мой аккаунт</h1>
             <div className="flex flex-col gap-2">
-              {['My Account', 'Order History', 'Shopping Cart', 'Wishlist'].map((item) => (
+              {['Мой аккаунт', 'История заказов', 'Корзина', 'Избранное'].map((item) => (
                 <Link key={item} onClick={scrollToTop} to="/" className="hover:text-primary transition duration-300">
                   {item}
                 </Link>
@@ -50,10 +67,10 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <h1 className="text-[18px] text-white font-semibold">Help</h1>
+          <div className="flex flex-col gap-4 mb-6 md:mb-0">
+            <h1 className="text-[18px] text-white font-semibold">Помощь</h1>
             <div className="flex flex-col gap-2">
-              {['Contact', 'FAQs', 'Terms & Condition', 'Privacy Policy'].map((item) => (
+              {['Контакты', 'FAQ', 'Условия', 'Политика конфиденциальности'].map((item) => (
                 <Link key={item} onClick={scrollToTop} to="/contact" className="hover:text-primary transition duration-300">
                   {item}
                 </Link>
@@ -61,21 +78,23 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <h1 className="text-[18px] text-white font-semibold">Proxy</h1>
-            <div className="flex flex-col gap-2">
-              {['About', 'Shop', 'Product', 'Track Order'].map((item) => (
-                <Link key={item} onClick={scrollToTop} to="/card" className="hover:text-primary transition duration-300">
-                  {item}
-                </Link>
-              ))}
+          {(isMobile || window.innerWidth < 1024) && (
+            <div className="flex flex-col gap-4 mb-6 md:mb-0">
+              <h1 className="text-[18px] text-white font-semibold">Прокси</h1>
+              <div className="flex flex-col gap-2">
+                {['О нас', 'Магазин', 'Продукт', 'Отслеживание заказа'].map((item) => (
+                  <Link key={item} onClick={scrollToTop} to="/card" className="hover:text-primary transition duration-300">
+                    {item}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="flex flex-col gap-4">
-            <h1 className="text-[18px] text-white font-semibold">Categories</h1>
+          <div className="flex flex-col gap-4 mb-6 md:mb-0">
+            <h1 className="text-[18px] text-white font-semibold">Категории</h1>
             <div className="flex flex-col gap-2">
-              {['Drink & Water', 'Yogurt & Ice Cream', 'Cake & Bread', 'Butter & Cream'].map((item) => (
+              {['Напитки и вода', 'Йогурты и мороженое', 'Торты и хлеб', 'Масло и сливки'].map((item) => (
                 <Link key={item} onClick={scrollToTop} to={`/${item.replace(/ & /g, '').replace(/ /g, '').toLowerCase()}`} className="hover:text-primary transition duration-300">
                   {item}
                 </Link>
@@ -108,5 +127,5 @@ export default function Footer() {
         </div>
       </div>
     </div>
-  )
+  );
 }

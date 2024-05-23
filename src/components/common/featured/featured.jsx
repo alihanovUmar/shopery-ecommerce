@@ -12,8 +12,8 @@ function Featured() {
   }, []);
 
   return (
-    <div data-aos="flip-down">
-      <div className="flex mx-0">
+    <div className="container mx-auto px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
           { Component: DeliveryTruck, title: 'Free Shipping', description: 'Free shipping with discount' },
           { Component: HeadPhones, title: 'Great Support 24/7', description: 'Instant access to Contact' },
@@ -22,13 +22,14 @@ function Featured() {
         ].map((item, index) => (
           <div
             key={index}
-            className="w-[330px] h-[222px] border border-[#E6E6E6] p-[40px] "
-            data-aos="flip-down">
-            <div className="w-[70px] h-[70px] border border-[#DAE5DA] rounded-[50%] bg-white flex items-center justify-center mb-4">
+            className="border border-gray-300 p-6 rounded-lg"
+            data-aos="fade-up"
+          >
+            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4 mx-auto">
               <item.Component />
             </div>
-            <h2 className="font-semibold text-base mb-2">{item.title}</h2>
-            <p>{item.description}</p>
+            <h2 className="font-semibold text-lg mb-2 text-center">{item.title}</h2>
+            <p className="text-center">{item.description}</p>
           </div>
         ))}
       </div>

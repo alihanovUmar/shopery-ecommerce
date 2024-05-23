@@ -65,7 +65,8 @@ const Customers = () => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: '80%',
+    maxWidth: 400,
     bgcolor: 'white',
     border: '2px solid #000',
     borderRadius: '10px',
@@ -75,10 +76,10 @@ const Customers = () => {
   }
 
   return (
-    <section>
-      <div className="container">
-        <div className="flex items-center justify-between">
-          <h2 className="title text-black text-3xl font-semibold">Our happy customers</h2>
+    <section className="px-4 py-8">
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-black">Our happy customers</h2>
           <Button
             onClick={handleOpen}
             sx={{
@@ -97,15 +98,15 @@ const Customers = () => {
           </Button>
         </div>
 
-        <div className="card-background flex flex-wrap gap-[80px] my-[120px] w-[1390px]">
+        <div className="flex flex-wrap gap-8 justify-center">
           {customersData.map((customer, index) => (
             <CustomersPropis
               key={index}
               name={customer.name}
               text={customer.text}
               onDelete={() => handleDeleteReview(index)}
-              buttonClassName="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 text-black transition duration-300 ease-in-out hover:bg-black hover:text-white shadow-md"
-              containerClassName="w-[400px] h-[200px] p-[40px] border-solid border-2 border-black-500 shadow-md"
+              buttonClassName="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-black transition duration-300 ease-in-out hover:bg-black hover:text-white shadow-md"
+              containerClassName="w-full md:w-[400px] h-[200px] p-6 border-solid border-2 border-black-500 shadow-md"
             />
           ))}
         </div>
@@ -120,14 +121,14 @@ const Customers = () => {
             <Typography variant="h5" align="center" gutterBottom>
               Add Review
             </Typography>
-            <div className="adds space-y-4 flex flex-col items-center justify-center">
+            <div className="space-y-4 flex flex-col items-center justify-center">
               <input
                 type="text"
                 name="name"
                 value={newReview.name}
                 onChange={handleInputChange}
                 placeholder="Customer Name"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
+                className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
               />
               <input
                 type="text"
@@ -136,17 +137,17 @@ const Customers = () => {
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 placeholder="Customer Review"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
+                className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
               />
               <div className="flex gap-3">
                 <button
-                  className="customers__btn-add bg-green-500 text-white py-2 px-4 rounded-md"
+                  className="bg-green-500 text-white py-2 px-4 rounded-md"
                   onClick={handleAddReview}
                 >
                   Add Review
                 </button>
                 <button
-                  className="customers__btn-close bg-red-500 text-white py-2 px-4 rounded-md"
+                  className="bg-red-500 text-white py-2 px-4 rounded-md"
                   onClick={handleClose}
                 >
                   Close

@@ -11,7 +11,7 @@ import './navbarLinks.css'
 const NavbarLinks = () => {
   return (
     <div className=" bg-gray-50">
-      <div className="max-w-[1320px] m-auto">
+      <div className="max-w-[1320px] m-auto px-[10px]">
         <div className="w-full flex items-center justify-between">
           <ul className="navbarLinks">
             {navbarData?.map((nav) => {

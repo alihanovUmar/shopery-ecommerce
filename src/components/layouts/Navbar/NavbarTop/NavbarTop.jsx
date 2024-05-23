@@ -21,9 +21,9 @@ const NavbarTop = () => {
   };
 
   return (
-    <div className="bg-gray-800 py-3 text-gray-300 text-xs font-normal">
-      <div className="flex items-center justify-between max-w-[1320px] m-auto">
-        <div>
+    <div className="bg-gray-800 py-2 md:p-3 text-gray-300 text-xs font-normal">
+      <div className="flex flex-col md:flex-row items-center justify-between max-w-[1320px] mx-auto px-4">
+        <div className="flex items-center gap-2 mb-2 md:mb-0">
           <a href="#1" className="cursor-pointer hover:text-primary flex items-center gap-2 transition-all">
             <CiLocationOn size={24} />
             <p>{t(translationKeys['Store Location'])}</p>
@@ -47,7 +47,7 @@ const NavbarTop = () => {
             </SelectContent>
           </Select>
           <div className="w-[1px] h-[15px] bg-gray-100"></div>
-          <div className="flex items-center gap-1 w-full">
+          <div className="flex items-center gap-1">
             {!logged ? (
               <>
                 <Link to="/sign-in" className="hover:text-primary">

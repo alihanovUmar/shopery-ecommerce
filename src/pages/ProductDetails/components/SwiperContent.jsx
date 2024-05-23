@@ -33,7 +33,7 @@ function SwiperContent({ product }) {
           className="cursor-pointer transition-all ease-in-out duration-300 hover:text-primary text-gray-400"
         />
         <div
-          className="flex flex-col items-start gap-3 h-[400px] overflow-auto scroll-smooth transition-all ease-in-out duration-300 scrollbar-hide"
+          className="flex flex-col items-start gap-3 h-[400px] scroll-smooth transition-all ease-in-out duration-300 scrollbar-hide"
           id="slider"
         >
           {images?.otherImages?.map(({ id, src, otherImageDescription }) => {
