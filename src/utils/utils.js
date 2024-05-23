@@ -2,12 +2,10 @@ import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { instance } from './apiRequest'
 
-// shadcn helper
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
 }
 
-// Get Current logged user
 export const getUser = async () => {
   const token = localStorage.getItem('token')
   const res = await instance.get('users')

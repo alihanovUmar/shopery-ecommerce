@@ -92,7 +92,7 @@ const Home = () => {
 
         <div className="container">
           <iframe
-            className="flex justify-center items-center p-[50px] rounded-md shadow-custom-lg hover:shadow-x transition-shadow duration-500  border-gray-200"
+            className="flex justify-center items-center p-[50px] rounded-[20px] shadow-custom-lg hover:shadow-x transition-shadow duration-500  border-gray-200"
             src="https://yandex.ru/map-widget/v1/?um=constructor%3A094a39eafebde5fc80bafd04951bc4c3f9d85095f3cfaee4dac7320da26b1970&amp;source=constructor"
             width="100%"
             height="600"

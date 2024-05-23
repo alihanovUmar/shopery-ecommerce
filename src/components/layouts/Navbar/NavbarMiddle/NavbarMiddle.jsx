@@ -1,33 +1,35 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '../../../ui/button';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { BsHandbag } from 'react-icons/bs';
-import { CiSearch } from 'react-icons/ci';
-import LogoIcon from '../images/LogoIcon';
-import { CartContext } from '../../../../contexts/store';
+import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Button } from '../../../ui/button'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { BsHandbag } from 'react-icons/bs'
+import { CiSearch } from 'react-icons/ci'
+import LogoIcon from '../images/LogoIcon'
+import { CartContext } from '../../../../contexts/store'
+import { useTranslation } from 'react-i18next' 
+import { translationKeys } from '../../../../utils/translation/translationKeys' 
+import { SlBasket } from "react-icons/sl";
 
 const NavbarMiddle = () => {
-  const [input, setInput] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const { cart, favoriteProducts, shoppingCart } = useContext(CartContext);
+  const [input, setInput] = useState('')
+  const [searchResults, setSearchResults] = useState([])
+  const { cart, favoriteProducts, shoppingCart } = useContext(CartContext)
+  const { t } = useTranslation() 
 
   const handleSearch = () => {
     if (input.trim()) {
-      const results = cart.filter(product =>
-        product.title.toLowerCase().includes(input.toLowerCase())
-      );
-      setSearchResults(results);
+      const results = cart.filter((product) => product.title.toLowerCase().includes(input.toLowerCase()))
+      setSearchResults(results)
     } else {
-      setSearchResults([]);
+      setSearchResults([])
     }
-  };
+  }
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      handleSearch();
+      handleSearch()
     }
-  };
+  }
 
   return (
     <div className="py-6">
@@ -46,8 +48,8 @@ const NavbarMiddle = () => {
               placeholder="Search"
               value={input}
               onChange={(e) => {
-                setInput(e.target.value);
-                handleSearch();
+                setInput(e.target.value)
+                handleSearch()
               }}
               onKeyPress={handleKeyPress}
             />
@@ -69,14 +71,13 @@ const NavbarMiddle = () => {
           <Link to="/shoppingCart">
             <div className="flex items-center gap-3">
               <div className="cursor-pointer relative">
-                <BsHandbag size={30} />
+              <SlBasket size={30} />
                 <p className="flex items-center justify-center border-[1px] border-white absolute right-[-3px] top-[-5px] w-[18px] h-[18px] rounded-full bg-hardPrimary text-white text-[10px]">
                   {shoppingCart.length}
                 </p>
               </div>
               <div className="flex flex-col">
-                <p className="text-[11px] text-gray-700">Shopping cart:</p>
-                <p className="text-[14px] text-gray-900 font-bold">{shoppingCart.length} items</p>
+                <p className="text-[11px] text-gray-700 w-[50px]">{t(translationKeys['Shopping cart:'])}</p>
               </div>
             </div>
           </Link>
@@ -107,7 +108,7 @@ const NavbarMiddle = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NavbarMiddle;
+export default NavbarMiddle

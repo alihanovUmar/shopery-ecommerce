@@ -1,33 +1,32 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../ui/select'
-
-import { CiLocationOn } from 'react-icons/ci'
-import { Link } from 'react-router-dom'
-
-import { useTranslation } from 'react-i18next'
-import { translationKeys } from '../../../../utils/translation/translationKeys'
-import { useEffect, useState } from 'react'
-import { getUser } from '../../../../utils/utils'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../ui/select';
+import { CiLocationOn } from 'react-icons/ci';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { translationKeys } from '../../../../utils/translation/translationKeys';
+import { useEffect, useState } from 'react';
+import { getUser } from '../../../../utils/utils';
 
 const NavbarTop = () => {
-  const [logged, setLogged] = useState(false)
+  const [logged, setLogged] = useState(false);
 
   useEffect(() => {
-    getUser().then(user => setLogged(user !== null))
-  }, [])
+    getUser().then(user => setLogged(user !== null));
+  }, []);
 
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
 
   const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang)
-    localStorage.setItem('lang', lang)
-  }
+    i18n.changeLanguage(lang);
+    localStorage.setItem('lang', lang);
+  };
+
   return (
     <div className="bg-gray-800 py-3 text-gray-300 text-xs font-normal">
       <div className="flex items-center justify-between max-w-[1320px] m-auto">
         <div>
           <a href="#1" className="cursor-pointer hover:text-primary flex items-center gap-2 transition-all">
             <CiLocationOn size={24} />
-            <p>{t(translationKeys['Store Location: Lincoln- 344, Illinois, Chicago, USA'])}</p>
+            <p>{t(translationKeys['Store Location'])}</p>
           </a>
         </div>
         <div className="flex items-center gap-5">
@@ -68,7 +67,7 @@ const NavbarTop = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NavbarTop
+export default NavbarTop;
