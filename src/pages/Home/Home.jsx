@@ -89,7 +89,7 @@ const Home = () => {
             <Video
               src="https://youtu.be/dLC54mz--Dk?si=u_u33hn1zg3Gym_X"
               width="100%"
-              height={matches ? '740px' : '500px'}
+              height={matches ? '75vh' : '50vh'} // Используем относительные значения для высоты
               title="We’re the Best Organic Farm in the World"
             />
           </div>

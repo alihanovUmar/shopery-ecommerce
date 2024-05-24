@@ -67,11 +67,11 @@ const NavbarLinks = () => {
             })}
           </ul>
 
-          <Sheet className="hidden" id="sheet">
+          <Sheet className="hidden mx-auto" id="sheet">
             <SheetTrigger className="bg-white rounded hidden" id="sheet">
               <AiOutlineMenu size={20} />
             </SheetTrigger>
-            <SheetContent className={'w-3/4'}>
+            <SheetContent className={'w-1/2'}>
               <SheetHeader>
                 <SheetTitle className="flex items-center justify-center py-8">
                   <Link to="/">

@@ -13,7 +13,7 @@ function Featured() {
 
   return (
     <div className="container mx-auto px-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="p-[20px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
           { Component: DeliveryTruck, title: 'Free Shipping', description: 'Free shipping with discount' },
           { Component: HeadPhones, title: 'Great Support 24/7', description: 'Instant access to Contact' },

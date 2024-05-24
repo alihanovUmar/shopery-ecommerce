@@ -20,7 +20,7 @@ function OurSpecial() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // 768 piksel genişlikten küçükse, mobil olarak kabul ediyoruz
+      setIsMobile(window.innerWidth < 768);
     };
 
     handleResize();
@@ -33,7 +33,7 @@ function OurSpecial() {
   }, []);
 
   return (
-    <div className="flex container justify-center items-center flex-wrap py-6 md:justify-between">
+    <div className="flex container justify-center items-center flex-wrap py-6 md:justify-around">
       {special.map((el) => {
         return (
           <div
