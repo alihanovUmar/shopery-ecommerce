@@ -1,55 +1,55 @@
-import React, { useContext } from 'react';
-import { MdDeleteForever, MdOutlineFavoriteBorder } from 'react-icons/md';
-import { CartContext } from '../../contexts/store';
+import React, { useContext } from 'react'
+import { MdDeleteForever, MdOutlineFavoriteBorder } from 'react-icons/md'
+import { CartContext } from '../../contexts/store'
 
 export default function ShoppingCart() {
   const { shoppingCart, favoriteProducts, addToFavorites, removeFromFavorites, removeFromCart } =
-    useContext(CartContext);
+    useContext(CartContext)
 
   const handleToggleFavorite = (id) => {
-    const isFavorite = isProductFavorite(id);
+    const isFavorite = isProductFavorite(id)
     if (isFavorite) {
-      removeFromFavorites(id);
+      removeFromFavorites(id)
     } else {
-      const productToAdd = shoppingCart.find((item) => item.id === id);
-      addToFavorites(productToAdd);
+      const productToAdd = shoppingCart.find((item) => item.id === id)
+      addToFavorites(productToAdd)
     }
-  };
+  }
 
   const handleRemoveFromCart = (id) => {
-    removeFromCart(id);
-  };
+    removeFromCart(id)
+  }
 
-  const isProductFavorite = (id) => favoriteProducts.some((favProduct) => favProduct.id === id);
+  const isProductFavorite = (id) => favoriteProducts.some((favProduct) => favProduct.id === id)
 
   const calculateTotalPrice = () => {
     return shoppingCart
       .reduce((total, item) => {
-        const price = parseFloat(item.prices.replace('$', ''));
-        return total + price;
+        const price = parseFloat(item.prices.replace('$', ''))
+        return total + price
       }, 0)
-      .toFixed(2);
-  };
+      .toFixed(2)
+  }
 
   const calculateDiscountedTotalPrice = () => {
     return shoppingCart
       .reduce((total, item) => {
         const price = item.discount
           ? parseFloat(item.discount.replace('$', ''))
-          : parseFloat(item.prices.replace('$', ''));
-        return total + price;
+          : parseFloat(item.prices.replace('$', ''))
+        return total + price
       }, 0)
-      .toFixed(2);
-  };
+      .toFixed(2)
+  }
 
   const handleOrder = () => {
-    alert('Заказ оформлен!');
-  };
+    alert('Заказ оформлен!')
+  }
 
   return (
     <div className="container">
       <h1 className="text-3xl font-bold mb-4 m-[60px] flex justify-center">Shopping Cart</h1>
-      <hr className='m-[50px]' />
+      <hr className="m-[50px]" />
       <div className="flex justify-between">
         <div className="flex overflow-x-auto gap-4 h-[430px] mt-[70px] bg-white rounded-lg shadow-md p-1 custom-scrollbar">
           {shoppingCart.map((item) => (
@@ -115,7 +115,7 @@ export default function ShoppingCart() {
           </div>
         </div>
       </div>
-      <hr className='m-[50px]' />
+      <hr className="m-[50px]" />
       <style jsx>{`
         .custom-scrollbar {
           scrollbar-width: thin;
@@ -127,5 +127,5 @@ export default function ShoppingCart() {
         }
       `}</style>
     </div>
-  );
+  )
 }

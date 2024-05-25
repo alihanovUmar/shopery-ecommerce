@@ -89,21 +89,22 @@ const Home = () => {
             <Video
               src="https://youtu.be/dLC54mz--Dk?si=u_u33hn1zg3Gym_X"
               width="100%"
-              height={matches ? '75vh' : '50vh'} // Используем относительные значения для высоты
+              height={matches ? '75vh' : '50vh'}
               title="We’re the Best Organic Farm in the World"
             />
           </div>
         </div>
-
         <div className="container">
-          <iframe
-            className="flex justify-center items-center p-[50px]"
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3A094a39eafebde5fc80bafd04951bc4c3f9d85095f3cfaee4dac7320da26b1970&amp;source=constructor"
-            width="100%"
-            height="400"
-            md:height="600"
-            frameBorder="0"
-          ></iframe>
+          <div className="hidden sm:block">
+            <div className="flex justify-center items-center mx-auto p-[20px] md:p-[50px] max-w-full">
+              <iframe
+                className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[600px] border-0 rounded-[20px] bg-[#cbcbcb] shadow-[5px_5px_10px_#bebebe,-5px_-5px_10px_#ffffff]"
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A094a39eafebde5fc80bafd04951bc4c3f9d85095f3cfaee4dac7320da26b1970&amp;source=constructor"
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>

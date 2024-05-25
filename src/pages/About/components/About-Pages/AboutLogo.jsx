@@ -6,17 +6,42 @@ import MangoIcon from '../Icons/mangoIcon'
 import SeriesIcon from '../Icons/seriesIcon'
 
 function AboutLogo() {
-    return (
-        <Container>
-            <div className="py-[80px] flex justify-between">
-                <a href="#" className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300"><FoodNetworkIcon /></a>
-                <a href="#" className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300"><MangoIcon /></a>
-                <a href="#" className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300"><FoodIcon /></a>
-                <a href="#" className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300"><BookOffIcon /></a>
-                <a href="#" className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300"><SeriesIcon /></a>
-            </div>
-        </Container>
-    )
+  return (
+    <Container>
+      <div className="flex items-center justify-around gap-[80px] flex-wrap p-[50px]">
+        <a
+          href="#"
+          className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300 hover:text-#00b207"
+        >
+          <FoodNetworkIcon />
+        </a>
+        <a
+          href="#"
+          className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300 hover:text-#00b207"
+        >
+          <MangoIcon />
+        </a>
+        <a
+          href="#"
+          className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300 hover:text-#00b207"
+        >
+          <FoodIcon />
+        </a>
+        <a
+          href="#"
+          className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300 hover:text-#00b207"
+        >
+          <BookOffIcon />
+        </a>
+        <a
+          href="#"
+          className="transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-110 duration-300 hover:text-#00b207"
+        >
+          <SeriesIcon />
+        </a>
+      </div>
+    </Container>
+  )
 }
 
 export default AboutLogo

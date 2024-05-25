@@ -16,7 +16,7 @@ const CustomersPropis = ({ name, text, onDelete, buttonClassName, containerClass
         className={buttonClassName}
         onClick={onDelete}
       >
-        <MdDeleteForever />
+        <MdDeleteForever className="w-[15px] h-[15px]" />
       </button>
     </div>
   );

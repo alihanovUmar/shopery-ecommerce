@@ -23,36 +23,33 @@ function FoodStoreCard() {
         >
           <SwiperSlide>
             <img
-              className="w-[100%] h-[550px] object-cover"
-              src="https://sgcctech.com/artwork/aboutus.jpg"
+              className="w-[100%] h-[550px] object-cover max-[600px]:h-[440px] max-[500px]:h-[380px] max-[400px]:h-[300px] max-[350px]:h-[280px] "
+              src="https://ir-3.ozone.ru/s3/multimedia-4/6823567948.jpg"
               alt=""
             />
           </SwiperSlide>
 
           <SwiperSlide>
             <img
-              className="w-[100%] h-[550px] object-cover"
-              src="https://www.gaprealestate.com/wp-content/uploads/2022/08/about-us.jpg"
+              className="w-[100%] h-[550px] object-cover max-[600px]:h-[440px] max-[500px]:h-[380px] max-[400px]:h-[300px] max-[350px]:h-[280px] "
+              src="https://klau.club/uploads/posts/2023-08/1693409567_klau-club-p-sochnie-ovoshchi-krasivo-45.jpg"
               alt=""
             />
           </SwiperSlide>
-
           <SwiperSlide>
             <img
-              className="w-[100%] h-[550px] object-cover"
-              src="https://blog.digitize-info.com/wp-content/uploads/2023/06/blog-banner.jpg"
+              className="w-[100%] h-[550px] object-cover max-[600px]:h-[440px] max-[500px]:h-[380px] max-[400px]:h-[300px] max-[350px]:h-[280px] "
+              src="https://www.wmj.ru/thumb/1280x720/smart/filters:quality(75)/imgs/2019/06/07/11/3403065/dbe2fd6e8bdcd39ee873bda4f7e84168cc0fbcde.jpg"
               alt=""
             />
           </SwiperSlide>
-
           <SwiperSlide>
             <img
-              className="w-[100%] h-[550px] object-cover"
-              src="https://ucare.timepad.ru/e8a35d7a-2e1b-4598-a505-0cefacd7e432/poster_event_940391.jpg"
+              className="w-[100%] h-[550px] object-cover max-[600px]:h-[440px] max-[500px]:h-[380px] max-[400px]:h-[300px] max-[350px]:h-[280px] "
+              src="https://mykaleidoscope.ru/x/uploads/posts/2022-09/1663700169_11-mykaleidoscope-ru-p-sochnie-frukti-oboi-11.jpg"
               alt=""
             />
           </SwiperSlide>
-
         </Swiper>
       </div>
     </div>

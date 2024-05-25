@@ -1,41 +1,41 @@
-import React, { useContext, useState } from 'react';
-import { SlBasket } from 'react-icons/sl';
-import { MdDeleteForever } from 'react-icons/md';
-import { CartContext } from '../../contexts/store';
+import React, { useContext, useState } from 'react'
+import { SlBasket } from 'react-icons/sl'
+import { MdDeleteForever } from 'react-icons/md'
+import { CartContext } from '../../contexts/store'
 
 export default function Favorite() {
-  const { favoriteProducts, removeFromFavorites, setShoppingCart, shoppingCart } = useContext(CartContext);
-  const [isBasketClicked, setIsBasketClicked] = useState({});
+  const { favoriteProducts, removeFromFavorites, setShoppingCart, shoppingCart } = useContext(CartContext)
+  const [isBasketClicked, setIsBasketClicked] = useState({})
 
   const handleToggleBasket = (id) => {
     setIsBasketClicked((prev) => ({
       ...prev,
       [id]: !prev[id],
-    }));
+    }))
 
-    const productToAdd = favoriteProducts.find((product) => product.id === id);
-    const isItemInCart = shoppingCart.some((item) => item.id === id);
+    const productToAdd = favoriteProducts.find((product) => product.id === id)
+    const isItemInCart = shoppingCart.some((item) => item.id === id)
 
     if (isItemInCart) {
-      setShoppingCart((prevCart) => prevCart.filter((item) => item.id !== id));
+      setShoppingCart((prevCart) => prevCart.filter((item) => item.id !== id))
     } else {
-      setShoppingCart((prevCart) => [...prevCart, { ...productToAdd, quantity: 1 }]);
+      setShoppingCart((prevCart) => [...prevCart, { ...productToAdd, quantity: 1 }])
     }
 
-    console.log(`Product with id ${id} added/removed from basket.`);
-  };
+    console.log(`Product with id ${id} added/removed from basket.`)
+  }
 
   const handleRemoveFromFavorites = (id) => {
-    removeFromFavorites(id);
-    console.log(`Product with id ${id} removed from favorites.`);
-  };
+    removeFromFavorites(id)
+    console.log(`Product with id ${id} removed from favorites.`)
+  }
 
   return (
     <div className="container">
       <center>
         <h1 className="m-[50px] text-gray-400 font-poppins text-[25px] font-normal">Favorite Products</h1>
       </center>
-      <div className="my-[50px] flex gap-[30px] flex-wrap">
+      <div className="my-[50px] hfef gap-[30px] flex-wrap overflow-y-auto max-[700px]:flex-nowrap max-[700px]:w-[400px]">
         {favoriteProducts && favoriteProducts.length > 0 ? (
           favoriteProducts.map((product) => (
             <div
@@ -79,5 +79,5 @@ export default function Favorite() {
         )}
       </div>
     </div>
-  );
+  )
 }

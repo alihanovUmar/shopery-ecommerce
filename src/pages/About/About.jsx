@@ -6,6 +6,9 @@ import AboutSwiper from './components/AboutSwiper/AboutSwiper'
 function About() {
   return (
     <>
+      <center>
+        <h2 className="mt-[50px] text-2xl font-bold">About Us</h2>
+      </center>
       <FoodStoreCard />
       <CardTeam />
       <AboutLogo />

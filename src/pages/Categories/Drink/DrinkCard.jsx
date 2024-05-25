@@ -46,10 +46,14 @@ export default function DrinkCard() {
     }
   }
 
-
   return (
     <div className="container">
-      <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className=" my-[50px] flex gap-[30px] flex-wrap">
+      <div
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
+    
+        className="my-[50px] hfef gap-[30px] flex-wrap overflow-y-auto max-[700px]:flex-nowrap max-[700px]:w-[400px]"
+      >
         {cart.slice(8, 16).map((item, index) => (
           <div
             key={index}

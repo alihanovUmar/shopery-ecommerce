@@ -39,7 +39,7 @@ export default function Footer() {
   return (
     <div className="w-full bg-gray-800 text-gray-300 text-xs">
       <div className="max-w-[1320px] mx-auto p-5 px-4">
-        <div className="flex flex-wrap justify-center md:justify-between items-center gap-[50px]">
+        <div className="flex flex-wrap justify-center md:justify-around items-center gap-[50px]">
           <div className="flex flex-col gap-5 mb-6 md:mb-0">
             <Link className="bg-white w-25 h-26 rounded-[10px]" onClick={scrollToTop} to="/">
               <LogoIcon className="w-24 h-24" />
@@ -105,8 +105,8 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-8"></div>
 
-        <div className="flex flex-wrap justify-between items-center pt-3">
-          <p className="text-xs text-center w-full lg:w-auto">&copy; 2024 MegaCenter eCommerce. All Rights Reserved.</p>
+        <div className="flex flex-wrap justify-between mx-auto items-center pt-3">
+          <p className="text-xs text-center w-full lg:w-auto">&copy; 2024 FullOrganic Commerce. All Rights Reserved.</p>
           <div className="flex items-center gap-4 mt-4 lg:mt-0">
             {[FaCcApplePay, FaCcVisa, FaCcDiscover, FaCcMastercard].map((Icon, index) => (
               <Icon key={index} className="text-2xl cursor-pointer hover:text-primary transition duration-300 transform hover:scale-110" />

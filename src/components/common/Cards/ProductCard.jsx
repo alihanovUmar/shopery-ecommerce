@@ -2,14 +2,11 @@ import React, { useContext, useState, useEffect } from 'react';
 import { SlBasket } from 'react-icons/sl';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { CartContext } from '../../../contexts/store';
-import ProductModal from './ProductModal';
 
 export default function ProductCard() {
   const { cart, addToFavorites, favoriteProducts, removeFromFavorites, setShoppingCart } = useContext(CartContext);
   const [isBasketClicked, setIsBasketClicked] = useState([]);
   const [localCart, setLocalCart] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const localCartData = JSON.parse(localStorage.getItem('cart'));
@@ -50,68 +47,48 @@ export default function ProductCard() {
     }
   };
 
-  const openModal = (product) => {
-    setSelectedProduct(product);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
-    <div className="product-card-container">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-[42px] overflow-x-auto">
-          {cart.slice(0, 8).map((item, index) => (
-            <div key={index} className="w-[310px] bg-white rounded-lg shadow-2xl border border-gray-300 text-left flex flex-col mb-8">
-              <img
-                onClick={() => openModal(item)}
-                className="w-full h-[220px] object-contain rounded-t-lg cursor-pointer"
-                src={item.img}
-                alt=""
-              />
-              <div className="p-4 flex flex-col justify-between flex-grow">
-                <div>
-                  <h2 className="text-black font-poppins text-xl font-normal leading-relaxed mb-2">{item.title}</h2>
-                  <p className="w-[250px] text-black-600 font-poppins text-base font-normal leading-relaxed overflow-hidden whitespace-nowrap overflow-ellipsis">
-                    {item.description}
-                  </p>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">{item.prices}</span>
-                    <span className="text-red-400 line-through">{item.discount}</span>
-                  </div>
-                </div>
-                <div className="flex justify-between mt-4">
-                  <button
-                    className={`w-[48%] p-[8px] flex items-center justify-center rounded-md box-border border border-gray-200 shadow-md 
-                      ${
-                        isBasketClicked.some((clickedProductId) => clickedProductId === item.id)
-                          ? 'bg-black text-white'
-                          : 'bg-white text-gray-600'
-                      }`}
-                    onClick={() => handleAddToBasket(item)}
-                  >
-                    <SlBasket className="text-lg" />
-                  </button>
-                  <button
-                    className={`w-[48%] flex items-center justify-center rounded-md box-border border border-gray-200 shadow-md 
-                      ${
-                        favoriteProducts.some((favProduct) => favProduct.id === item.id)
-                          ? 'bg-black text-white'
-                          : 'bg-white text-gray-600'
-                      }`}
-                    onClick={() => handleAddToFavorites(item)}
-                  >
-                    <MdOutlineFavoriteBorder className="text-lg" />
-                  </button>
-                </div>
+    <div className="container mx-auto p-4">
+      <div
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
+        className="my-[50px] flex gap-[30px] justify-start flex-nowrap overflow-x-auto scrollbar-thumb-rounded-full scrollbar-track-gray-400 scrollbar-thumb-[#00b207]-800"
+      >
+        {cart.slice(0, 8).map((item, index) => (
+          <div
+            key={index}
+            className="bg-white rounded-lg shadow-2xl border border-gray-300 w-[300px] max-[430px]:w-[230px] h-[420px] max-[430px]:h-[340px] text-left flex flex-col mb-4"
+          >
+            <img className="w-full h-[220px] max-[430px]:h-[160px] object-contain rounded-lg mb-4" src={item.img} alt="" />
+            <div data-aos="fade-down" className="text p-2">
+              <h2 className="text-black-600 font-poppins text-[30px] max-[430px]:text-[22px] font-normal leading-relaxed">{item.title}</h2>
+              <p className="w-[250px] max-[430px]:w-[200px] text-black-600 font-poppins text-base font-normal leading-relaxed overflow-hidden whitespace-nowrap overflow-ellipsis">
+                {item.description}
+              </p>
+              <div className="text-[20px] font-normal font-poppins flex gap-5 items-center mb-4">
+                <h3 className="text-gray-600">{item.prices}</h3>
+                <h3 className="text-red-400 line-through">{item.discount}</h3>
+              </div>
+              <div className="flex justify-between">
+                <button
+                  className={`w-[120px] max-[430px]:w-[98px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
+                    ${isBasketClicked.some((clickedProductId) => clickedProductId === item.id) ? 'bg-black text-white' : 'bg-white text-gray-600'}`}
+                  onClick={() => handleAddToBasket(item)}
+                >
+                  <SlBasket className="text-lg" />
+                </button>
+                <button
+                  className={`w-[120px] max-[430px]:w-[98px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
+                    ${favoriteProducts.some((favProduct) => favProduct.id === item.id) ? 'bg-black text-white' : 'bg-white text-gray-600'}`}
+                  onClick={() => handleAddToFavorites(item)}
+                >
+                  <MdOutlineFavoriteBorder className="text-lg" />
+                </button>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-      {isModalOpen && <ProductModal product={selectedProduct} closeModal={closeModal} />}
     </div>
   );
 }
