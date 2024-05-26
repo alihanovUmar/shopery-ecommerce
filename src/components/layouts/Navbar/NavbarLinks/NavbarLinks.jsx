@@ -69,7 +69,7 @@ const NavbarLinks = () => {
 
           <Sheet className="hidden mx-auto" id="sheet">
             <SheetTrigger className="bg-white rounded hidden" id="sheet">
-              <AiOutlineMenu size={20} />
+              <AiOutlineMenu size={25} />
             </SheetTrigger>
             <SheetContent className={'w-1/2'}>
               <SheetHeader>

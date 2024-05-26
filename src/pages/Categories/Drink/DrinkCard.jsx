@@ -51,8 +51,7 @@ export default function DrinkCard() {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
-    
-        className="my-[50px] hfef gap-[30px] flex-wrap overflow-y-auto max-[700px]:flex-nowrap max-[700px]:w-[400px]"
+        className="my-[50px] hfef gap-[30px] flex-wrap overflow-y-auto max-[700px]:flex-nowrap  max-[700px]:w-[580px] max-[655px]:w-[540px]  max-[590px]:w-[500px] max-[550px]:w-[450px]  max-[500px]:w-[400px] max-[450px]:w-[350px] max-[400px]:w-[300px] max-[350px]:w-[260px]"
       >
         {cart.slice(8, 16).map((item, index) => (
           <div
