@@ -77,7 +77,7 @@ export default function ProductCard() {
               </div>
               <div className="flex justify-between">
                 <button
-                  className={`w-[120px] max-[430px]:w-[98px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
+                  className={`w-[130px] max-[430px]:w-[98px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
                     ${
                       isBasketClicked.some((clickedProductId) => clickedProductId === item.id)
                         ? 'bg-black text-white'
@@ -88,7 +88,7 @@ export default function ProductCard() {
                   <SlBasket className="text-lg" />
                 </button>
                 <button
-                  className={`w-[120px] max-[430px]:w-[98px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
+                  className={`w-[130px] max-[430px]:w-[98px] h-[40px] flex items-center justify-center rounded-[10px] box-border border border-gray-200 shadow-md 
                     ${
                       favoriteProducts.some((favProduct) => favProduct.id === item.id)
                         ? 'bg-black text-white'

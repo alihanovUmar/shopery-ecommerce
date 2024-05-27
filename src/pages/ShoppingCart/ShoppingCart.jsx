@@ -50,7 +50,7 @@ export default function ShoppingCart() {
     <div className="container">
       <h1 className="text-3xl font-bold mb-4 m-[60px] flex justify-center">Shopping Cart</h1>
       <hr className="m-[50px]" />
-      <div className="flex justify-between">
+      <div className="flex justify-between max-[800px]:flex-col max-[800px]:gap-[35px]">
         <div className="flex overflow-x-auto gap-4 h-[430px] mt-[70px] bg-white rounded-lg shadow-md p-1 custom-scrollbar">
           {shoppingCart.map((item) => (
             <div key={item.id} className="bg-white rounded-lg shadow-md p-4 w-[280px] flex-shrink-0">
@@ -81,7 +81,7 @@ export default function ShoppingCart() {
           ))}
         </div>
         <div className="mt-4 p-4 border-t border-gray-200 flex justify-center">
-          <div className="sticky top-0 left-0 right-0 bg-white rounded-lg shadow-md p-4 w-[330px] text-center">
+          <div className=" max-[350px]:w-[300px] sticky top-0 left-0 right-0 bg-white rounded-lg shadow-md p-4 w-[330px] text-center">
             <div>
               {shoppingCart.slice(0, 4).map((item) => (
                 <div className="flex items-center justify-between" key={item.id}>
@@ -106,7 +106,7 @@ export default function ShoppingCart() {
               <hr />
               <p className="text-[18px] font-semibold m-[15px]">Discounted Total Price: ${calculateTotalPrice()}</p>
               <button
-                className="w-[306px] h-[51px] rounded-[43px] bg-gradient-to-r from-[#00b307] to-[#15d11bac] text-white shadow-md hover:shadow-lg transition duration-300 ease-in-out"
+                className="w-[306px] max-[350px]:w-[250px] h-[51px] rounded-[43px] bg-gradient-to-r from-[#00b307] to-[#15d11bac] text-white shadow-md hover:shadow-lg transition duration-300 ease-in-out"
                 onClick={handleOrder}
               >
                 Заказать товары
