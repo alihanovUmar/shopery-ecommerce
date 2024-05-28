@@ -52,7 +52,7 @@ export function Card() {
       <div
         data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
-        className="my-[50px] hfeff gap-[30px] flex min-[860px]:justify-center flex-wrap overflow-y-auto max-[860px]:flex-nowrap  max-[860px]:w-[580px] max-[655px]:w-[540px]  max-[590px]:w-[500px] max-[550px]:w-[450px]  max-[500px]:w-[400px] max-[450px]:w-[350px] max-[400px]:w-[300px] max-[350px]:w-[260px]"
+        className="my-[50px] hfeff gap-[30px] flex min-[860px]:justify-center flex-wrap overflow-y-auto max-[860px]:flex-nowrap  max-[860px]:w-[790px] max-[850px]:w-[100%] max-[655px]:w-[540px]  max-[590px]:w-[500px] max-[550px]:w-[450px]  max-[500px]:w-[400px] max-[450px]:w-[350px] max-[400px]:w-[300px] max-[350px]:w-[260px]"
       >
         {cart &&
           cart.map((item) => (

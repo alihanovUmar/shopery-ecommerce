@@ -8,6 +8,7 @@ import LogoIcon from '../images/LogoIcon';
 import { CartContext } from '../../../../contexts/store';
 import { useTranslation } from 'react-i18next';
 import { translationKeys } from '../../../../utils/translation/translationKeys';
+import { IoSearchOutline } from "react-icons/io5";
 
 const NavbarMiddle = () => {
   const [input, setInput] = useState('');
@@ -39,7 +40,7 @@ const NavbarMiddle = () => {
         <div className="flex flex-col md:flex-row items-center justify-between w-full md:w-auto mb-4 md:mb-0">
           <div className="flex">
             <div className="flex items-center w-full md:w-auto justify-between px-4 border-r-primary py-1 gap-1 border border-gray-200 rounded-l-lg">
-              <CiSearch size={24} />
+              <IoSearchOutline  size={24} />
               <input
                 type="text"
                 className="bg-transparent w-full p-2 outline-none border-none text-gray-500 text-sm"
