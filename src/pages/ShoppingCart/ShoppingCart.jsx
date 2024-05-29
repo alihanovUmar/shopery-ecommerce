@@ -1,10 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { MdDeleteForever, MdOutlineFavoriteBorder } from 'react-icons/md'
 import { CartContext } from '../../contexts/store'
+import Modal from './Modal'
 
 export default function ShoppingCart() {
   const { shoppingCart, favoriteProducts, addToFavorites, removeFromFavorites, removeFromCart } =
     useContext(CartContext)
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleToggleFavorite = (id) => {
     const isFavorite = isProductFavorite(id)
@@ -43,6 +46,14 @@ export default function ShoppingCart() {
   }
 
   const handleOrder = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleModalClose = () => {
+    setIsModalOpen(false)
+  }
+
+  const handleConfirmOrder = () => {
     alert('Заказ оформлен!')
   }
 
@@ -106,7 +117,9 @@ export default function ShoppingCart() {
               <hr />
               <p className="text-[18px] font-semibold m-[15px]">Discounted Total Price: ${calculateTotalPrice()}</p>
               <button
-                className="w-[306px] max-[350px]:w-[250px] h-[51px] rounded-[43px] bg-gradient-to-r from-[#00b307] to-[#15d11bac] text-white shadow-md hover:shadow-lg transition duration-300 ease-in-out"
+                className="w-[306px] max-[350px]:w-[
+
+250px] h-[51px] rounded-[43px] bg-gradient-to-r from-[#00b307] to-[#15d11bac] text-white shadow-md hover:shadow-lg transition duration-300 ease-in-out"
                 onClick={handleOrder}
               >
                 Заказать товары
@@ -116,6 +129,7 @@ export default function ShoppingCart() {
         </div>
       </div>
       <hr className="m-[50px]" />
+      <Modal isOpen={isModalOpen} onClose={handleModalClose} onConfirm={handleConfirmOrder} />
       <style jsx>{`
         .custom-scrollbar {
           scrollbar-width: thin;
