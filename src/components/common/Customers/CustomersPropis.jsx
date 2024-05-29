@@ -1,5 +1,4 @@
 import React from "react";
-import { MdDeleteForever } from "react-icons/md";
 import "./Customers.css"
 
 const CustomersPropis = ({ name, text, onDelete, buttonClassName, containerClassName }) => {
@@ -12,12 +11,6 @@ const CustomersPropis = ({ name, text, onDelete, buttonClassName, containerClass
         </div>
         <p className="text-black font-normal">{text}</p>
       </div>
-      <button
-        className={buttonClassName}
-        onClick={onDelete}
-      >
-        <MdDeleteForever className="w-[15px] h-[15px]" />
-      </button>
     </div>
   );
 };
