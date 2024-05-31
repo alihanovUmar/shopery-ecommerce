@@ -9,10 +9,10 @@ import { Button } from "../../../components/ui/button";
 import Container from "../../../components/common/Container";
 import { useLoginFormValidator } from "../useLoginFormValidator";
 import { instance } from "../../../utils/apiRequest";
-import { initialUserData } from '../../../utils/constants'
+import { initialUserData } from '../../../utils/constants';
 
 export default function Signup() {
-  const [passwordVisible, setPasswordVisible] = useState({ p1: false, p2: false })
+  const [passwordVisible, setPasswordVisible] = useState({ p1: false, p2: false });
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -23,7 +23,6 @@ export default function Signup() {
 
   const onUpdateField = e => {
     const field = e.target.name;
-
     const nextFormState = {
       ...form,
       [field]: e.target.value,
@@ -53,19 +52,21 @@ export default function Signup() {
         ...initialUserData.billingAddress,
         email: form.email
       }
+    };
+
+    try {
+      const response = await instance.post('users/', newUser);
+      localStorage.setItem('token', response.data.token);
+      location.href = '/dashboard';
+    } catch (error) {
+      console.error("Error creating user:", error);
     }
-
-    await instance.post('users/', newUser)
-    localStorage.setItem('token', newUser.token)
-
-    location.href = '/dashboard'
   };
 
   return (
     <Container>
       <div className="w-full h-[100vh] flex items-center justify-center">
-        <div
-          className="w-[520px] mh-[470px] flex flex-col items-center gap-[20px] shadow-[0px_0px_56px_0px_rgba(0,38,3,0.08)] rounded-md p-[24px]">
+        <div className="w-[520px] mh-[470px] flex flex-col items-center gap-[20px] shadow-[0px_0px_56px_0px_rgba(0,38,3,0.08)] rounded-md p-[24px]">
           <h1 className="text-[32px] font-semibold">Create Account</h1>
           <div className="w-[100%] flex flex-col gap-[12px]">
             <div>
@@ -136,7 +137,10 @@ export default function Signup() {
               ) : null}
             </div>
             <label className="flex items-center gap-1 cursor-pointer w-[22%] select-none">
-              <Checkbox onCheckedChange={(e) => setForm(prev => ({ ...prev, seller: e }))} />
+              <Checkbox
+                checked={form.seller}
+                onCheckedChange={(e) => setForm(prev => ({ ...prev, seller: e }))}
+              />
               <span className="text-gray-500">I am Seller</span>
             </label>
           </div>
@@ -145,5 +149,5 @@ export default function Signup() {
         </div>
       </div>
     </Container>
-  )
+  );
 }

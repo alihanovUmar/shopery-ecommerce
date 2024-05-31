@@ -17,7 +17,11 @@ function Featured() {
         {[
           { Component: DeliveryTruck, title: 'Fast delivery', description: 'Fast delivery with discount' },
           { Component: HeadPhones, title: 'Great Support 24/7', description: 'Instant access to Contact' },
-          { Component: ShoppingBag, title: 'Money-Back Guarantee', description: '30 days money-back guarantee' },
+          {
+            Component: ShoppingBag,
+            title: 'Money-Back Guarantee',
+            description: 'Refund within 48 hours...',
+          },
           { Component: Paccages, title: 'Free Shipping', description: 'Fast delivery with confidence' },
         ].map((item, index) => (
           <div key={index} className="border border-gray-300 p-6 rounded-lg" data-aos="fade-up">

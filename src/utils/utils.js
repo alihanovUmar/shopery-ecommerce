@@ -7,19 +7,21 @@ export function cn(...inputs) {
 }
 
 export const getUser = async () => {
-  const token = localStorage.getItem('token')
-  const res = await instance.get('users')
-  if (res.status == 200) {
-    const filteredUser = res.data.filter((user) => user.token === token)
+  try {
+    const response = await fetch('/api/user', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
 
-    if (filteredUser.length > 0) {
-      return filteredUser[0]
-    } else {
-      console.log('User not found')
-      return null
+    if (!response.ok) {
+      throw new Error('Failed to fetch user data')
     }
-  } else {
-    console.log('Failed to getting user')
+
+    const user = await response.json()
+    return user
+  } catch (error) {
+    console.error(error)
+    return null
   }
-  return token
 }

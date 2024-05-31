@@ -10,7 +10,13 @@ const NavbarTop = () => {
   const [logged, setLogged] = useState(false);
 
   useEffect(() => {
-    getUser().then(user => setLogged(user !== null));
+    getUser().then(user => {
+      if (user && user.token) {
+        setLogged(true);
+      } else {
+        setLogged(false);
+      }
+    });
   }, []);
 
   const { t, i18n } = useTranslation();
