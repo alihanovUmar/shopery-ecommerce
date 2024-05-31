@@ -24,7 +24,7 @@ export default function Footer() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Мобильный вид для ширины менее 768 пикселей
+      setIsMobile(window.innerWidth < 768); 
     };
 
     handleResize();
@@ -57,9 +57,9 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4 mb-6 md:mb-0">
-            <h1 className="text-[18px] text-white font-semibold">Мой аккаунт</h1>
+            <h1 className="text-[18px] text-white font-semibold">My account</h1>
             <div className="flex flex-col gap-2">
-              {['Мой аккаунт', 'История заказов', 'Корзина', 'Избранное'].map((item) => (
+              {['My Account', 'Order History', 'Cart', 'Favorites'].map((item) => (
                 <Link key={item} onClick={scrollToTop} to="/" className="hover:text-primary transition duration-300">
                   {item}
                 </Link>
@@ -68,9 +68,9 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4 mb-6 md:mb-0">
-            <h1 className="text-[18px] text-white font-semibold">Помощь</h1>
+            <h1 className="text-[18px] text-white font-semibold">Help</h1>
             <div className="flex flex-col gap-2">
-              {['Контакты', 'FAQ', 'Условия', 'Политика конфид-ности'].map((item) => (
+              {['Contacts', 'FAQ', 'Terms', 'Privacy Policy'].map((item) => (
                 <Link key={item} onClick={scrollToTop} to="/contact" className="hover:text-primary transition duration-300">
                   {item}
                 </Link>
@@ -80,9 +80,9 @@ export default function Footer() {
 
           {(isMobile || window.innerWidth < 1024) && (
             <div className="flex flex-col gap-4 mb-6 md:mb-0">
-              <h1 className="text-[18px] text-white font-semibold">Прокси</h1>
+              <h1 className="text-[18px] text-white font-semibold">Proxy</h1>
               <div className="flex flex-col gap-2">
-                {['О нас', 'Магазин', 'Продукт', 'Отслеживание заказа'].map((item) => (
+                {['About Us', 'Shop', 'Product', 'Order Tracking'].map((item) => (
                   <Link key={item} onClick={scrollToTop} to="/card" className="hover:text-primary transition duration-300">
                     {item}
                   </Link>
@@ -92,9 +92,9 @@ export default function Footer() {
           )}
 
           <div className="flex flex-col gap-4 mb-6 md:mb-0">
-            <h1 className="text-[18px] text-white font-semibold">Категории</h1>
+            <h1 className="text-[18px] text-white font-semibold">Categories</h1>
             <div className="flex flex-col gap-2">
-              {['Напитки и вода', 'Йогурты и мороженое', 'Торты и хлеб', 'Масло и сливки'].map((item) => (
+              {['Drinks and water', 'Yogurts and ice cream', 'Cakes and bread', 'Butter and cream'].map((item) => (
                 <Link key={item} onClick={scrollToTop} to={`/${item.replace(/ & /g, '').replace(/ /g, '').toLowerCase()}`} className="hover:text-primary transition duration-300">
                   {item}
                 </Link>
